@@ -1,4 +1,5 @@
-<section class="flex relative overflow-hidden items-center justify-center vh-100 center bg-black {{ cond (isset . "bg") .bg "bg-center" }} cover" style="background-image: url('{{.img}}')">
+<section class="flex relative overflow-hidden items-center justify-center vh-100 center bg-black {{ cond (isset . "bg") .bg "bg-center" }} cover" style="background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5) ), url('{{ .img }}'); background-position:
+center center; background-size: cover;">
   {{ if isset . "subtitle" }}
   <h2 class="absolute mv0 f-15vw fw9 lh-solid white-50 tc ttu">{{ .subtitle | safeHTML }}</h2>
   {{ end }}

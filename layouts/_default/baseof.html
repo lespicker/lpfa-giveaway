@@ -2,9 +2,6 @@
 <html lang="en">
 {{ partial "head" . }}
 <body class="lh-copy near-black bg-white lato">
-  {{ block "header" . }}
-    {{ partial "nav" . }}
-  {{ end }}
 
   <div class="page-wrap overflow-x-hidden">
 
@@ -54,19 +51,6 @@
         }
       });
   </script>
-
-  <!--Netlify CMS Identity-->
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
-  
+    
 </body>
 </html>
