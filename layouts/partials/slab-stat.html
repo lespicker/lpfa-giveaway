@@ -1,0 +1,29 @@
+<article class="" data-name="slab-stat-small">
+  <h3 class="f6 ttu tracked">{{ .name }}</h3>
+  <div class="cf">
+    {{ if isset . "event_date" }}
+    <dl class="fr w-100 dib lh-title ml0">
+      <dd class="f6 fw4 ml0">Date</dd>
+      <dd class="f4 f7-m fw6 ml0">{{ dateFormat "Monday, Jan 2, 2006 15:04" .event_date }}</dd>
+    </dl>
+    {{ end }}
+    {{ if isset . "event_end" }}
+    <dl class="fr w-100 dib lh-title ml0">
+      <dd class="f6 fw4 ml0">Thru</dd>
+      <dd class="f4 f7-m fw6 ml0">{{ dateFormat "Monday, Jan 2, 2006 15:04" .event_end }}</dd>
+    </dl>
+    {{ end }}
+    {{ if isset . "location" }}
+    <dl class="fr w-50 dib lh-title">
+      <dd class="f6 fw4 ml0">Location</dd>
+      <dd class="f4 f7-m fw6 ml0">{{ .location }}</dd>
+    {{ end }}
+    </dl>
+    {{ with .notes }}
+    <dl class="fr w-100 dib lh-title">
+      <dd class="f6 fw4 ml0">Notes</dd>
+      <dd class="f6 f7-m fw3 ml0">{{ . }}</dd>
+    </dl>
+    {{ end }}
+  </div>
+</article>          

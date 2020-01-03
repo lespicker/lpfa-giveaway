@@ -1,0 +1,29 @@
+baseURL = "https://lesterpickerphoto.com/"
+languageCode = "en-us"
+title = "LPFA"
+
+[frontmatter]
+  date  = [":filename", ":default"]
+
+[permalinks]
+  news = ":year/:month/:day/:slug"
+
+[taxonomies]
+  category = "categories"
+  type = "types"
+  tag = "tags"
+  destination = "destination"  
+
+Paginate = 5
+
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
