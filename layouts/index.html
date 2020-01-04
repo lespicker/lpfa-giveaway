@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-{{ partial "big-block-form" (dict "img" .Params.image "title" .Title "subtitle" (.Params.subtitle | safeHTML) "sideline" .Params.sideline ( cond (isset .Params "sidecolor") "sidecolor" "" ) .Params.sidecolor "bg" .Params.background "bnlink" "/" "button" "Try This" "bcolor" .Params.bcolor) }}
+{{ partial "big-block-form" (dict "img" .Params.image "title" .Title "subtitle" (.Params.subtitle | safeHTML) "sideline" .Params.sideline ( cond (isset .Params "sidecolor") "sidecolor" "" ) .Params.sidecolor "bg" .Params.background) }}
 
 {{ if isset .Params "sideline" }}
 {{ partial "sideline" (dict "sideline" .Params.sideline (cond (isset .Params "sidecolor") "sidecolor" "") .Params.sidecolor) }}

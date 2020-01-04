@@ -30,7 +30,7 @@
 
 </script>
 
-<section class="flex relative overflow-hidden items-center justify-center vh-100 center bg-black {{ cond (isset . "bg") .bg "bg-center" }} cover" style="background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5) ), url('{{ .img }}'); background-position:
+<section class="flex relative overflow-hidden items-center justify-center vh-100 center bg-black {{ cond (isset . "bg") .bg "bg-center" }} cover" style="background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7) ), url('{{ .img }}'); background-position:
 center center; background-size: cover;">
   {{ if isset . "subtitle" }}
   <h2 class="absolute mv0 f-15vw fw9 lh-solid white-50 tc ttu">{{ .subtitle | safeHTML }}</h2>
@@ -43,12 +43,11 @@ center center; background-size: cover;">
     <a href="{{ cond (isset . "bnlink") .bnlink "mailto:les@lesterpickerphoto.com" }}" class="dib mt4 link w-auto-ns bg-transparent {{ cond (isset . "bcolor") .bcolor "white" }} f5 pv2 pv3-ns ph4 ba {{ cond (isset . "bcolor")   (printf "b--%s" .bcolor) "b--white"}} dim ttu">{{ .button }}</a>
     {{ end }}
 
-<div class="mt4 pv5">
-  <h2 class="mt0 mb4 f2">Guest Book</h2>
+<div class="mt4 ph5 mw6 center">
     <div class="flex">
       <form id="enter" class="flex flex-wrap items-stretch w-100 near-black" name="enter" method="post">
       <div class="flex flex-wrap items-stretch w-100 near-black">
-        <div class="w-50 pr2">
+        <div class="w-100 pr2">
         <div class="db w-100">
           <input class="db border-box hover-black w-100 ba b--gray pa2 br3" type="text" name="name" id="namevigil" required placeholder="Name">
         </div>
@@ -58,17 +57,15 @@ center center; background-size: cover;">
         <div class="db w-100 mt3">
           <input class="db border-box hover-black w-100 ba b--gray pa2 br3" type="text" name="regno" id="regno"  placeholder="Registration No.">
         </div>
-        </div>
-        <div class="w-50 pl2">
         <div class="db w-100">
           <div id='recaptcha' class="g-recaptcha" data-sitekey="6LcBMrQUAAAAALBFHZGF9cMQDtuUQUuUqrLE37kF" data-callback="onCompleted" data-size="invisible"></div>
         </div>
-        </div>
         <div class="w-100">
-        <input class="dib fr mt3 ph4 pv3 br3 ba b--mh-green mh-bg-green white hover-bg-white hover-mh-green pointer ttu" type="submit" id="submit" value="Send">
+          <input class="dib mt4 link w-auto-ns bg-transparent dark-red f5 pv2 pv3-ns ph4 b--dark-red ba dim ttu" type="submit" id="submit" value="Send">
+        </div>
         </div>
       </div>
-        </form>
+      </form>
     </div>
   </div>
 </div>
