@@ -1,0 +1,152 @@
+<script>
+
+  document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById('condolence').addEventListener('submit', post_condolence);
+    document.getElementById('vigil').addEventListener('submit', post_vigil);
+    getVigil();
+  });
+
+  function onCompleted(){
+    console.log('captcha completed.');
+    let name = document.getElementById('name').value;
+    let email = document.getElementById('email').value;
+    let phone = document.getElementById('phone').value;
+    let message = document.getElementById('message').value;
+    let to = document.getElementById('to').value;
+    let gresponse = grecaptcha.getResponse();
+
+    data = {
+      data:{
+        name: name,
+        email: email,
+        phone: phone,
+        message: message,
+        to: to,
+        gresponse: gresponse
+      }
+    }
+
+    fetch("https://wt.cdox.cc/condolence",{
+      method: "post",
+      headers: {
+        "Content-type": "application/json"
+      },
+      mode: "cors",
+      body: JSON.stringify(data)
+    }).then(function(response){
+      response.json().then(b => console.log(b));
+    });
+    document.getElementById("condolence").reset();
+    grecaptcha.reset();
+    window.location.href = '#modal-close';
+  }
+
+  function onCompletedVigil(){
+    console.log('captcha completed.');
+    let candle = (document.getElementById('candle').checked ? "on" : "off");
+    let name = document.getElementById('namevigil').value;
+    let email = document.getElementById('emailvigil').value;
+    let phone = document.getElementById('phonevigil').value;
+    let message = document.getElementById('messagevigil').value;
+    let to = document.getElementById('tovigil').value;
+    let gresponse = grecaptcha.getResponse();
+
+    data = {
+      data:{
+        name: name,
+        email: email,
+        phone: phone,
+        message: message,
+        to: to,
+        candle: candle,
+        gresponse: gresponse
+      }
+    }
+
+    let fd = new FormData(document.getElementById('vigil'));
+
+    fetch("https://wt.cdox.cc/vigil",{
+    //fetch("http://localhost:8000/vigil",{
+      method: "post",
+      mode: "cors",
+      body: fd
+    }).then(function(response){
+      response.json().then(b => addVigil(b));
+    });
+    d = new Date();
+    //addVigil({name: name, date: d.toDateString(), text: message, candle: candle});
+    document.getElementById("vigil").reset();
+    grecaptcha.reset();
+  }
+</script>
+
+<section class="flex relative overflow-hidden items-center justify-center vh-100 center bg-black {{ cond (isset . "bg") .bg "bg-center" }} cover" style="background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5) ), url('{{ .img }}'); background-position:
+center center; background-size: cover;">
+  {{ if isset . "subtitle" }}
+  <h2 class="absolute mv0 f-15vw fw9 lh-solid white-50 tc ttu">{{ .subtitle | safeHTML }}</h2>
+  {{ end }}
+  <div class="relative mw8 tc">
+    {{ if isset . "title" }}
+    <h2 class="mv0 mh2 mh4-ns f1 f-subheadline-ns fw3 lh-title white tc">{{ .title | safeHTML }}</h2>
+    {{ end }}
+    {{ if isset . "bnlink" }}
+    <a href="{{ cond (isset . "bnlink") .bnlink "mailto:les@lesterpickerphoto.com" }}" class="dib mt4 link w-auto-ns bg-transparent {{ cond (isset . "bcolor") .bcolor "white" }} f5 pv2 pv3-ns ph4 ba {{ cond (isset . "bcolor")   (printf "b--%s" .bcolor) "b--white"}} dim ttu">{{ .button }}</a>
+    {{ end }}
+
+<div class="mt4 pv5">
+  <h2 class="mt0 mb4 f2">Guest Book</h2>
+    <div class="flex">
+      <form id="vigil" class="flex flex-wrap items-stretch w-100 near-black" name="vigil" method="post">
+      <div class="mb3">
+        <div class="relative overflow-hidden dib">
+          <button class="pa2 mr3 br3 ba b--mh-green mh-bg-green white hover-bg-white hover-mh-green pointer ttu">Upload Picture</button>
+          <input class="absolute left-0 top-0 o-0" type="file" name="pic" accept="image/*">
+        </div>
+        <label class="mr1 ttu" for="candle">Light a candle</label>
+        <input class="" type="checkbox" name="candle" id="candle">
+      </div>
+      <div class="flex flex-wrap items-stretch w-100 near-black">
+        <div class="w-50 pr2">
+        <div class="db w-100">
+          <input class="db border-box hover-black w-100 ba b--gray pa2 br3" type="text" name="name" id="namevigil" required placeholder="Name">
+        </div>
+        <div class="db w-100 mt3">
+          <input class="db border-box hover-black w-100 ba b--gray pa2 br3" type="email" name="email" id="emailvigil" required placeholder="Email">
+        </div>
+        <div class="db w-100 mt3">
+          <input class="db border-box hover-black w-100 ba b--gray pa2 br3" type="text" name="phone" id="phonevigil"  placeholder="Phone">
+        </div>
+        </div>
+        <div class="w-50 pl2">
+        <div class="db w-100 h-100">
+          <textarea class="db h-100 border-box hover-black w-100 ba b--gray pa2 br3" name="message" id="messagevigil" placeholder="Message" rows="3"></textarea>
+        </div>
+        <div class="db w-100">
+          {{ with .Params.email }}
+          <input class="" type="hidden" name="tovigil" id="tovigil" value="{{.}}">
+          {{ else }}
+          <input class="" type="hidden" name="to" id="tovigil" value="condolences@mccreryandharra.com">
+          {{ end }}
+          <div id='recaptcha-vigil' class="g-recaptcha" data-sitekey="6LcBMrQUAAAAALBFHZGF9cMQDtuUQUuUqrLE37kF" data-callback="onCompletedVigil" data-size="invisible"></div>     
+        </div>
+        </div>
+        <div class="w-100">
+        <input class="dib fr mt3 ph4 pv3 br3 ba b--mh-green mh-bg-green white hover-bg-white hover-mh-green pointer ttu" type="submit" id="submitvigil" value="Send">
+        </div>
+      </div>
+        </form>
+    </div>
+  <div id="vigil-area" class="flex flex-wrap nl2 nr2">
+
+  </div>
+</div>
+
+
+  </div>
+  {{ if isset . "sideline" }}
+  <div class="dn sideline absolute top-200 left-0 inline-flex-ns items-center nowrap">
+    <span class="bar dib mr2 {{ cond (isset . "sidecolor") (printf "bg-%s" .sidecolor) "bg-white" }}"></span> 
+    <h3 class="mv3 f6 fw5 tracked-mega ttu {{ cond (isset . "sidecolor") .sidecolor "white" }}">{{ .sideline }}</h3>
+  </div>
+  {{ end }}  
+</section>
