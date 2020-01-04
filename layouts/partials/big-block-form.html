@@ -43,19 +43,19 @@ center center; background-size: cover;">
     <a href="{{ cond (isset . "bnlink") .bnlink "mailto:les@lesterpickerphoto.com" }}" class="dib mt4 link w-auto-ns bg-transparent {{ cond (isset . "bcolor") .bcolor "white" }} f5 pv2 pv3-ns ph4 ba {{ cond (isset . "bcolor")   (printf "b--%s" .bcolor) "b--white"}} dim ttu">{{ .button }}</a>
     {{ end }}
 
-<div class="mt4 ph5 mw6 center">
+  <div class="mt4 ph5 mw6 center">
     <div class="flex">
       <form id="enter" class="flex flex-wrap items-stretch w-100 near-black" name="enter" method="post">
       <div class="flex flex-wrap items-stretch w-100 near-black">
         <div class="w-100 pr2">
         <div class="db w-100">
-          <input class="db border-box hover-black w-100 ba b--gray pa2 br3" type="text" name="name" id="namevigil" required placeholder="Name">
+          <input class="bg-transparent db border-box hover-black w-100 ba b--dark-red pa2 br3" type="text" name="name" id="namevigil" required placeholder="Name">
         </div>
         <div class="db w-100 mt3">
-          <input class="db border-box hover-black w-100 ba b--gray pa2 br3" type="email" name="email" id="emailvigil" required placeholder="Email">
+          <input class="bg-transparent db border-box hover-black w-100 ba b--dark-red pa2 br3" type="email" name="email" id="emailvigil" required placeholder="Email">
         </div>
         <div class="db w-100 mt3">
-          <input class="db border-box hover-black w-100 ba b--gray pa2 br3" type="text" name="regno" id="regno"  placeholder="Registration No.">
+          <input class="bg-transparent db border-box hover-black w-100 ba b--dark-red pa2 br3" type="text" name="regno" id="regno"  placeholder="Registration No.">
         </div>
         <div class="db w-100">
           <div id='recaptcha' class="g-recaptcha" data-sitekey="6LcBMrQUAAAAALBFHZGF9cMQDtuUQUuUqrLE37kF" data-callback="onCompleted" data-size="invisible"></div>
@@ -68,7 +68,10 @@ center center; background-size: cover;">
       </form>
     </div>
   </div>
-</div>
+
+  <div class="content mw7 center mt4 ph4">
+    {{ .content }}
+  </div>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
