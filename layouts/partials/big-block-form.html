@@ -9,8 +9,8 @@
 
     let fd = new FormData(document.getElementById('enter'));
 
-    //fetch("https://wt.cdox.cc/vigil",{
-    fetch("http://localhost:8000/register",{
+    fetch("https://lpfa.cdox.cc/register",{
+    //fetch("http://localhost:8000/register",{
       method: "post",
       mode: "cors",
       body: fd
@@ -58,7 +58,7 @@ center center; background-size: cover;">
           <input class="bg-transparent db border-box hover-black w-100 ba b--dark-red pa2 br3" type="text" name="regno" id="regno"  placeholder="Registration No.">
         </div>
         <div class="db w-100">
-          <div id='recaptcha' class="g-recaptcha" data-sitekey="6LcBMrQUAAAAALBFHZGF9cMQDtuUQUuUqrLE37kF" data-callback="onCompleted" data-size="invisible"></div>
+          <div id='recaptcha' class="g-recaptcha" data-sitekey="6LemYswUAAAAADyhIlwz3hAzM5InkDqoMGOvQgVx" data-callback="onCompleted" data-size="invisible"></div>
         </div>
         <div class="w-100">
           <input class="dib mt4 link w-auto-ns bg-transparent dark-red f5 pv2 pv3-ns ph4 b--dark-red ba dim ttu" type="submit" id="submit" value="Send">
