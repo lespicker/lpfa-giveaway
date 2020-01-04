@@ -12,7 +12,7 @@ readerbg: bg-white-80
 quote:
   text: "If there is one thing I’ve learned it is that we are more alike than different."
   cite: "Les Picker"
-layout: "404"
+layout: "bigform"
 ---
 
 

@@ -1,6 +1,14 @@
 ---
 title: "Les Picker Fine Art Photography"
-image: "/images/DSCF0602-2.jpg"
-cta: "/contact"
+title: >
+    <span class="dark-red">Looks like you're looking for something <span class="fw7">no longer available.</span></span>
+sideline: 'Photography | Art | Education'
+sidecolor: 'white'
+image: "/images/_LAP3652.jpg"
+bcolor: "dark-red"
+background: 'bg-center'
+readerbg: bg-white-80
+quote:
+  text: "If there is one thing I’ve learned it is that we are more alike than different."
+  cite: "Les Picker"
 ---
-Fugiat eiusmod et ullamco ipsum amet magna Lorem deserunt cillum quis cillum. Ipsum officia adipisicing laborum velit consectetur laborum occaecat tempor cillum ipsum fugiat. In adipisicing irure est nostrud sit est reprehenderit aliqua Lorem quis consequat irure. Sunt id Lorem deserunt ad exercitation est ut esse quis cillum enim irure sint laboris.
