@@ -30,14 +30,14 @@
 
 </script>
 
-<section class="flex relative overflow-hidden items-center justify-center vh-100 center bg-black {{ cond (isset . "bg") .bg "bg-center" }} cover" style="background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7) ), url('{{ .img }}'); background-position:
+<section class="flex relative overflow-hidden items-center justify-center min-vh-100 center bg-black {{ cond (isset . "bg") .bg "bg-center" }} cover" style="background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7) ), url('{{ .img }}'); background-position:
 center center; background-size: cover;">
   {{ if isset . "subtitle" }}
-  <h2 class="absolute mv0 f-15vw fw9 lh-solid white-50 tc ttu">{{ .subtitle | safeHTML }}</h2>
+  <h2 class="absolute f-15vw fw9 lh-solid white-50 tc ttu">{{ .subtitle | safeHTML }}</h2>
   {{ end }}
   <div class="relative mw8 tc">
     {{ if isset . "title" }}
-    <h2 class="mv0 mh2 mh4-ns f1 f-subheadline-ns fw3 lh-title white tc">{{ .title | safeHTML }}</h2>
+    <h2 class="mt4 mv0-ns mh2 mh4-ns f1 f-subheadline-ns fw3 lh-title white tc">{{ .title | safeHTML }}</h2>
     {{ end }}
     {{ if isset . "bnlink" }}
     <a href="{{ cond (isset . "bnlink") .bnlink "mailto:les@lesterpickerphoto.com" }}" class="dib mt4 link w-auto-ns bg-transparent {{ cond (isset . "bcolor") .bcolor "white" }} f5 pv2 pv3-ns ph4 ba {{ cond (isset . "bcolor")   (printf "b--%s" .bcolor) "b--white"}} dim ttu">{{ .button }}</a>

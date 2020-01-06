@@ -67,6 +67,12 @@ svg {
 }
 
 @media screen and (min-width: 48em){
+  .f-15vw {
+    font-size: 16vw;
+  }
+}
+
+@media screen and (min-width: 48em){
   .f-super-ns{
     font-size: 14rem;
   }
